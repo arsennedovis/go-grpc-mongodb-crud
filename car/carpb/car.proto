@@ -1,0 +1,61 @@
+syntax = "proto3";
+
+package car;
+
+option go_package = "car/carpb";
+
+message Car {
+    string id = 1;
+    string owner_id = 2;
+    string gov_id = 3;
+    string brand = 4;
+}
+
+message CreateCarRequest {
+    Car car = 1;
+}
+
+message CreateCarResponce {
+    Car car = 1; //will have a blog id
+}
+
+message ReadCarRequest {
+    string car_id = 1;
+}
+
+message ReadCarResponce {
+    Car car = 1;
+}
+
+
+message UpdateCarRequest{
+    Car car = 1;
+}
+
+message UpdateCarResponce {
+    Car car = 1;
+}
+
+message DeleteCarRequest {
+    string car_id = 1;
+}
+
+message DeleteCarResponce {
+    string car_id = 1;
+}
+
+message ListCarRequest {
+
+}
+
+message ListCarResponce {
+    Car car = 1;
+}
+
+service CarService{
+    rpc CreateCar (CreateCarRequest) returns (CreateCarResponce);
+    rpc ReadCar (ReadCarRequest) returns (ReadCarResponce); // return not fount if not found
+    rpc UpdateCar (UpdateCarRequest) returns (UpdateCarResponce);
+    rpc DeleteCar (DeleteCarRequest) returns (DeleteCarResponce);
+    rpc ListCar (ListCarRequest) returns (stream ListCarResponce);
+}

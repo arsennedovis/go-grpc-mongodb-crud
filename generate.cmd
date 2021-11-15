@@ -1,0 +1,1 @@
+protoc car/carpb/car.proto --go_out=plugins=grpc:.
